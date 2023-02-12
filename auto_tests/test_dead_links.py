@@ -3,7 +3,6 @@ from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ExCon
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webelement import WebElement
 
 driver = webdriver.Firefox()
 driver.get('http://www.deadlinkcity.com/')
