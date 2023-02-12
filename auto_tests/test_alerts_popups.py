@@ -9,15 +9,29 @@ wait = WebDriverWait(driver, 10, 0.4)
 
 driver.get('https://the-internet.herokuapp.com/javascript_alerts')
 driver.maximize_window()
+
+# PROMPT WINDOW
 # prompt_btn = wait.until(ExCon.presence_of_element_located((By.XPATH, "//button[@onclick='jsPrompt()']")), 'PROMPT BTN')
 prompt_btn = wait.until(ExCon.presence_of_element_located((By.XPATH, "//button[normalize-space()='Click for JS Prompt']")), 'PROMPT BTN')
 prompt_btn.click()
-alert_window = driver.switch_to.alert  # .window / .frame ...
-print(alert_window.text)  # DOESN'T PRINT ANYTHING (???)
+prompt_window = driver.switch_to.alert  # .window / .frame ...
+print(prompt_window.text)  # DOESN'T PRINT ANYTHING (???)
+prompt_window.send_keys("I am Alex")
+prompt_window.accept()  # "Ok" button
+# alert_window.dismiss()  # "Cancel" button
 
-alert_window.send_keys("I am Alex")
+# CONFIRM WINDOW
+confirm_btn = wait.until(ExCon.presence_of_element_located((By.XPATH, "//button[normalize-space()='Click for JS Confirm']")), 'CONFIRM BTN')
+confirm_btn.click()
+confirm_window = driver.switch_to.alert
+print(confirm_window.text)
+confirm_window.dismiss()
+
+# ALERT WINDOW
+alert_btn = wait.until(ExCon.presence_of_element_located((By.XPATH, "//button[normalize-space()='Click for JS Alert']")), 'ALERT BTN')
+alert_btn.click()
+alert_window = driver.switch_to.alert
+print(alert_window.text)
 alert_window.accept()
-# alert_window.dismiss()
 
-# driver.save_screenshot('alerts_1.png')
 time.sleep(5)
