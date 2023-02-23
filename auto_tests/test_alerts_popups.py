@@ -15,7 +15,7 @@ driver.maximize_window()
 prompt_btn = wait.until(ExCon.presence_of_element_located((By.XPATH, "//button[normalize-space()='Click for JS Prompt']")), 'PROMPT BTN')
 prompt_btn.click()
 prompt_window = driver.switch_to.alert  # .window / .frame ...
-print(prompt_window.text)  # DOESN'T PRINT ANYTHING (???)
+print(prompt_window.text)  # I am a JS prompt
 prompt_window.send_keys("I am Alex")
 prompt_window.accept()  # "Ok" button
 # alert_window.dismiss()  # "Cancel" button
@@ -24,18 +24,14 @@ prompt_window.accept()  # "Ok" button
 confirm_btn = wait.until(ExCon.presence_of_element_located((By.XPATH, "//button[normalize-space()='Click for JS Confirm']")), 'CONFIRM BTN')
 confirm_btn.click()
 confirm_window = driver.switch_to.alert
-print(confirm_window.text)
+print(confirm_window.text)  # I am a JS Confirm
 confirm_window.dismiss()
 
 # ALERT WINDOW
 alert_btn = wait.until(ExCon.presence_of_element_located((By.XPATH, "//button[normalize-space()='Click for JS Alert']")), 'ALERT BTN')
 alert_btn.click()
 alert_window = driver.switch_to.alert
-print(alert_window.text)
+print(alert_window.text)  # I am a JS Alert
 alert_window.accept()
 
 time.sleep(5)
-
-
-
-
