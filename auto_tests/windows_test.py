@@ -23,7 +23,7 @@ print(f'parent window: {parent_window_id}')  # == driver.current_window_handle
 child_window_id = window_ids[1]
 driver.switch_to.window(child_window_id)
 time.sleep(5)
-driver.save_screenshot('window_child.png')
+driver.save_screenshot('screenshots/window_child.png')
 print(f'driver title: {driver.title}')
 print(f'child window: {child_window_id}')
 driver.close()
@@ -31,7 +31,7 @@ driver.close()
 # switch the driver back to the first (parent) window
 driver.switch_to.window(parent_window_id)
 time.sleep(5)
-driver.save_screenshot('window_parent.png')
+driver.save_screenshot('screenshots/window_parent.png')
 print(f'driver title: {driver.title}')
 
 
@@ -39,6 +39,17 @@ if window_id == parent_window_id:
     print("Current window ID is the same as the parent window ID")
 else:
     print("Current window ID is NOT the same as the parent window ID")
+
+
+# Another approach:
+"""
+for window in window_ids:
+    print(window)
+    time.sleep(3)
+    driver.switch_to.window(window)
+    if driver.title == "OrangeHRM":
+        driver.close()
+"""
 
 time.sleep(5)
 driver.quit()
