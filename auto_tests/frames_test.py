@@ -19,14 +19,12 @@ package_link.click()
 driver.switch_to.default_content()  # back to main page
 # driver.switch_to.parent_frame()
 driver.switch_to.frame("packageFrame")
-# driver.find_element(By.LINK_TEXT, 'WebDriver').click()
 web_driver_link = wait.until(ExCon.visibility_of_element_located((By.LINK_TEXT, "WebDriver")), '"WebDriver" LINK BUTTON')
 web_driver_link.click()
 
 driver.switch_to.default_content()  # back to main page
 # driver.switch_to.parent_frame()
 driver.switch_to.frame("classFrame")
-# driver.find_element(By.XPATH, "//div[@class='topNav']//li[contains(text(), 'Help')]").click()
 help_link = wait.until(ExCon.visibility_of_element_located((By.XPATH, "//div[@class='topNav']//a[contains(text(), 'Help')]")), '"Help" LINK BUTTON')
 help_link.click()
 
