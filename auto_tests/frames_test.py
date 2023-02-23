@@ -27,6 +27,7 @@ driver.switch_to.default_content()  # back to main page
 driver.switch_to.frame("classFrame")
 help_link = wait.until(ExCon.visibility_of_element_located((By.XPATH, "//div[@class='topNav']//a[contains(text(), 'Help')]")), '"Help" LINK BUTTON')
 help_link.click()
+driver.save_screenshot('screenshots/frames.png')
 
 time.sleep(5)
 driver.quit()

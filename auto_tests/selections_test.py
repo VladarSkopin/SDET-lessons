@@ -22,13 +22,13 @@ print(f'Last option: \n{country_options[len(country_options) - 1]} \n-----------
 
 country_dropdown_box.select_by_index(13)  # Australia
 time.sleep(3)
-driver.save_screenshot('registration_1.png')
+driver.save_screenshot('screenshots/registration_1.png')
 country_dropdown_box.select_by_visible_text('Canada')
 time.sleep(3)
-driver.save_screenshot('registration_2.png')
+driver.save_screenshot('screenshots/registration_2.png')
 country_dropdown_box.select_by_value('10')  # Argentina
 time.sleep(3)
-driver.save_screenshot('registration_3.png')
+driver.save_screenshot('screenshots/registration_3.png')
 driver.quit()
 
 

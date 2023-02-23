@@ -11,7 +11,6 @@ driver.get('https://demo.automationtesting.in/Frames.html')
 driver.maximize_window()
 
 wait.until(ExCon.visibility_of_element_located((By.XPATH, "//a[@href='#Multiple']")), '"Frame within a frame" TAB').click()
-driver.save_screenshot('nested_frames.png')
 
 # //iframe[@src='MultipleFrames.html']
 outer_frame = wait.until(ExCon.presence_of_element_located((By.XPATH, "//iframe[@src='MultipleFrames.html']")), 'OUTER FRAME')
@@ -23,6 +22,7 @@ driver.switch_to.frame(inner_frame)
 
 input_box = wait.until(ExCon.presence_of_element_located((By.XPATH, "//input[@type='text']")), 'INPUT BOX')
 input_box.send_keys("Sasha")
+driver.save_screenshot('screenshots/nested_frames.png')
 
 time.sleep(5)
 driver.quit()
