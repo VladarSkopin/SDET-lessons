@@ -9,6 +9,8 @@ wait = WebDriverWait(driver, 10, 0.4)
 
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
 driver.maximize_window()
+# time.sleep(3)
+# driver.minimize_window()  # the rest of the code below will still work !
 
 # get current window ID, click on link button to open another window
 window_id = driver.current_window_handle
