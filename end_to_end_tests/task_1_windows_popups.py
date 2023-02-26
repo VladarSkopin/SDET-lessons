@@ -18,7 +18,7 @@ assert page_title.lower() == "automation testing practice"
 alert_btn = wait.until(ExCon.visibility_of_element_located((By.XPATH, "//button[text()='Click Me']")), "ALERT BTN")
 alert_btn.click()
 prompt_window = driver.switch_to.alert
-print(prompt_window.text)
+print(f'Prompt window text: {prompt_window.text}')
 time.sleep(3)
 prompt_window.accept()
 
@@ -27,7 +27,7 @@ text_under_alert_btn = wait.until(ExCon.visibility_of_element_located((By.XPATH,
 print(f'Text under alert button: \"{text_under_alert_btn}\"')
 assert text_under_alert_btn == "You pressed OK!"
 
-# type "taco" into search box
+# type "taco" into the search box
 input_wiki_btn = wait.until(ExCon.visibility_of_element_located((By.XPATH, "//input[@class='wikipedia-search-input']")), "INPUT WIKI BTN")
 input_wiki_btn.send_keys("taco")
 
@@ -76,7 +76,7 @@ for window in window_ids:
     driver.switch_to.window(window)
     print(f'window {count}: {window}')
     time.sleep(3)
-    driver.save_screenshot(f"screenshots/window_{count}.png")
+    driver.save_screenshot(f"screenshots_tasks/window_{count}.png")
     count += 1
 
 for window in window_ids:
