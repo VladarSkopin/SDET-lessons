@@ -46,14 +46,23 @@ print(f'Total number of rows in the table: {number_of_rows}')
 
 # print Username, User role, Employee name where Status is "Enabled"
 print('Where Status is "Enabled": ')
+count_enabled_users = 0
+count_disabled_users = 0
 for x in range(1, number_of_rows + 1):
-    status_data: str = wait.until(ExCon.presence_of_element_located((By.XPATH, f"//div[@class='oxd-table-card'][{x}]//div[@class='oxd-table-cell oxd-padding-cell'][5]")), f"STATUS").text
+    status_data: str = wait.until(ExCon.presence_of_element_located((By.XPATH, f"//div[@class='oxd-table-card'][{x}]//div[@class='oxd-table-cell oxd-padding-cell'][5]")), "STATUS").text
     if status_data.lower() == 'enabled':
         current_username: str = wait.until(ExCon.presence_of_element_located((By.XPATH, f"//div[@class='oxd-table-card'][{x}]//div[@class='oxd-table-cell oxd-padding-cell'][2]")), "USER NAME").text
         current_user_role: str = wait.until(ExCon.presence_of_element_located((By.XPATH, f"//div[@class='oxd-table-card'][{x}]//div[@class='oxd-table-cell oxd-padding-cell'][3]")), "USER ROLE").text
         current_employee_name: str = wait.until(ExCon.presence_of_element_located((By.XPATH, f"//div[@class='oxd-table-card'][{x}]//div[@class='oxd-table-cell oxd-padding-cell'][4]")), "EMPLOYEE NAME").text
-        print(f'Username: "{current_username}" | User Role: "{current_user_role}" | Employee Name: "{current_employee_name}"')
+        current_status: str = wait.until(ExCon.presence_of_element_located((By.XPATH, f"//div[@class='oxd-table-card'][{x}]//div[@class='oxd-table-cell oxd-padding-cell'][5]")), "USER STATUS").text
+        print(f'Username: "{current_username}" | User Role: "{current_user_role}" | Employee Name: "{current_employee_name}" | Status: "{current_status}"')
+        count_enabled_users += 1
+    else:
+        count_disabled_users += 1
     print()
+
+print(f'Total number of users with "Enabled" status: {count_enabled_users}')
+print(f'Total number of users with "Disabled" status: {count_disabled_users}')
 
 time.sleep(5)
 driver.quit()
