@@ -49,7 +49,20 @@ for x in range(2, (len(table_rows) + 1)):  # starting from 2nd row, since 1st ro
             data = wait.until(ExCon.presence_of_element_located((By.XPATH, f"//table[@name='BookTable']//tr[{x}]/td[{y}]")), f"TABLE CELL FROM COLUMN #{x} ROW #{y}")
             print(f'| "{data.text}"', end='')
         print()
+print('-----')
 
+# Read only specific data cells from a table
+count = 0
+print('Books and prices where author is "Amit": ')
+for x in range(2, (len(table_rows) + 1)):  # starting from 2nd row, since 1st row = table headers
+    data_author = wait.until(ExCon.presence_of_element_located((By.XPATH, f"//table[@name='BookTable']//tr[{x}]/td[{2}]")), f"AUTHOR")
+    if data_author.text == 'Amit':
+        print(f'Row #{x}: ', end='')
+        book_name: str = wait.until(ExCon.presence_of_element_located((By.XPATH, f"//table[@name='BookTable']//tr[{x}]/td[1]")), f"TABLE CELL FROM COLUMN #{x} ROW #1").text
+        book_price: str = wait.until(ExCon.presence_of_element_located((By.XPATH, f"//table[@name='BookTable']//tr[{x}]/td[4]")), f"TABLE CELL FROM COLUMN #{x} ROW #4").text
+        print(f'{book_name} | {book_price}')
+        count += 1
+print(f'The author with the name "Amit" is present in {count} books')
 
 time.sleep(5)
 driver.quit()
