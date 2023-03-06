@@ -53,6 +53,7 @@ while True:
         time.sleep(1)
 """
 
+assert date_picker_input_box.get_attribute('value') == '09/01/2002', 'DATES DO NOT MATCH'
 
 time.sleep(5)
 driver.quit()
