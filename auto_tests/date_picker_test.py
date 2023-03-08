@@ -9,7 +9,6 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.firefox import GeckoDriverManager
 from typing import List
 
-
 driver: WebDriver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
 wait: WebDriverWait = WebDriverWait(driver, 10, 0.6)
 
@@ -42,17 +41,8 @@ while True:
         # click "Next" icon
         wait.until(ExCon.presence_of_element_located((By.XPATH, "//a[@data-handler='next']")), "DATEPICKER NEXT ICON").click()
         time.sleep(0.1)
-"""        
-    elif int(y) < int(year):
-        # click "Next" icon
-        wait.until(ExCon.presence_of_element_located((By.XPATH, "//a[@data-handler='next']")), "DATEPICKER NEXT ICON").click()
-        time.sleep(1)
-    elif int(y) > int(year):
-        # click "Previous" icon
-        wait.until(ExCon.presence_of_element_located((By.XPATH, "//a[@data-handler='prev']")), "DATEPICKER PREVIOUS ICON").click()
-        time.sleep(1)
-"""
 
+assert date_picker_input_box.get_attribute('value') == '09/01/2002', 'DATES DO NOT MATCH'
 
 time.sleep(5)
 driver.quit()
