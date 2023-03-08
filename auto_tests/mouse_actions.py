@@ -48,7 +48,7 @@ for capital in capitals:
     elif capital.text.lower() == 'washington':
         act.move_to_element(capital).click_and_hold().move_to_element(country_us).release().perform()
 
-# now these elements have reloaded, with new CSS values
+# now these elements have been reloaded, with new CSS values
 capitals: List[WebElement] = wait.until(ExCon.presence_of_all_elements_located((By.XPATH, "//div[@class='dragableBox' and contains(@id, 'box')]")), "CAPITALS LIST")
 capitals_colors: dict = {}
 for capital in capitals:
