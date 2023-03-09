@@ -48,5 +48,16 @@ for capital in capitals:
     elif capital.text.lower() == 'washington':
         act.move_to_element(capital).click_and_hold().move_to_element(country_us).release().perform()
 
+# now these elements have reloaded, with new CSS values
+capitals: List[WebElement] = wait.until(ExCon.presence_of_all_elements_located((By.XPATH, "//div[@class='dragableBox' and contains(@id, 'box')]")), "CAPITALS LIST")
+capitals_colors: dict = {}
+for capital in capitals:
+    capitals_colors[capital.text] = capital.value_of_css_property('background-color')
+
+for capital in capitals_colors:
+    print(capitals_colors[capital])
+    assert capitals_colors[capital] == "rgb(0, 255, 0)", f'{capital} IS NOT GREEN!'
+
+
 time.sleep(5)
 driver.quit()
